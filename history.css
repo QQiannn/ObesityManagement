@@ -1,0 +1,189 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Playfair Display', sans-serif;
+	max-width: 100%;
+}
+
+/* -- button -- */
+#toTopBtn {
+	bottom: 20px;
+	right: 30px;
+	position: fixed;
+	background: #4F54CA;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 35px;
+	font-size: 1.4em; 
+	z-index: 99; /* Ensure no overlapping */
+	border: none;
+	outline: none;
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	display: block;
+	text-decoration: none;
+	webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	display: none;
+	color: #FFF;
+	text-align: center;
+}
+
+#website-logo{
+	width: 210px;
+	height: 140px;
+}
+
+#user-icon{
+	width: 50px;
+	height: 50px;
+}
+
+.nav-item{
+	font-size: 1.55em;
+	padding: 0 10px 0 10px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+	padding: 0;
+}
+
+/*Navigation bar colour*/
+.bg-light {
+    background-color: #DDDFFD!important;
+}
+
+.currpage{
+	border-bottom: 2px solid #000;
+}
+
+.table {
+    width: 96%;
+	font-size: 1.1em;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border: 3px solid #918c8c;
+	border-bottom: none;
+	background-color: #4F54CA;
+	color: #fff;
+}
+
+.table td, .table th {
+    border: 2px solid #bdb9b9;
+	font-family: Merriweather;
+}
+
+.table tbody tr:hover {
+    color: #212529;
+    background-color: rgb(192 150 237 / 28%);
+}
+
+.abovetable{
+	padding: 15px;
+}
+
+#editBtn{
+	background-color: #054C19;
+	margin: 0 20px 10px 10px;
+    border-radius: 25px;
+    border-radius: 25px;
+    position: absolute;
+    top: 32%;
+    left: 90%;
+    transform: translate(20%, -40%);
+    -ms-transform: translate(20%, -40%);
+}
+
+#headerimg{
+	width: 90%;
+}
+
+.row li{
+	font-size: 1.0em;
+	font-family: Merriweather;
+}
+
+.row{
+	padding: 5px;
+	border-bottom: 3px dotted #4F54CA;
+}
+
+.row h1{
+	font-weight: 700;
+	text-align: center;
+	padding-top: 15px;
+	font-family: Merriweather;
+}
+
+.workouts h5{
+	font-weight: 700;
+	font-family: Merriweather;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.workoutimg{
+	padding:15px;
+}
+
+#deadlift{
+	width: 100%;
+	height: 200px;
+}
+
+#standing{
+	height: 350px;
+}
+
+.userprofile{
+	margin: 20px 80px 0 80px;
+	padding: 40px;
+	background-color: #DDDFFD;
+	border-radius: 35px;
+}
+
+.userprofile p{
+	font-size: 1.3em;
+	margin: 10px;
+	font-weight: 700;
+}
+
+.userprofile h1{
+	text-align: center;
+	font-weight: 800;
+}
+
+/*radio button colour*/
+.form-check-input:checked {
+    background-color: #4F54CA;
+    border-color: #A3A9FF;
+}
+
+.form-control{
+	color: #000;
+	font-size: 1.2em;
+}
+
+label{
+	color: #000;
+	font-size: 1.2em;
+}
+
+#editProfileBtn{
+	margin-top: 25px;
+	color: #fff;
+    background-color: #4F54CA;
+    border-color: #DDDFFD;
+	padding: 0.2rem 0.2rem;
+    font-size: 0.95rem;
+    border-radius: 0.5rem;
+}
+
+.editProfile{
+	text-align: right;
+}
