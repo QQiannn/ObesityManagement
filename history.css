@@ -83,22 +83,6 @@
     background-color: rgb(192 150 237 / 28%);
 }
 
-.abovetable{
-	padding: 15px;
-}
-
-#editBtn{
-	background-color: #054C19;
-	margin: 0 20px 10px 10px;
-    border-radius: 25px;
-    border-radius: 25px;
-    position: absolute;
-    top: 32%;
-    left: 90%;
-    transform: translate(20%, -40%);
-    -ms-transform: translate(20%, -40%);
-}
-
 #headerimg{
 	width: 90%;
 }

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<?php
-   include('session.php');
-   $sql = "SELECT * FROM bmi WHERE stdIC = (SELECT stdIC FROM student WHERE stdEmail = '$login_session');";
-   $records = mysqli_query($conn, $sql);
+<?php 
+	include('session.php');
+   $sql = "SELECT * FROM student WHERE stdIC = (SELECT stdIC FROM student WHERE stdEmail = '$login_session');";
+   $records = mysqli_query($conn, $sql) or die("Failed to execute query in editProfile.php");
+   $row = mysqli_fetch_assoc($records);
+   $stdName = $row['stdName'];
+   $stdGender = $row['stdGender'];
+   $stdClass = $row['stdClass'];
+   $stdPassword = $row['stdPassword'];
+   $stdIC = $row['stdIC'];
+   $stdEmail = $row['stdEmail'];
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width", initial-scale=1.0>
-	<title>HISTORY</title>
+	<title>USER</title>
 	<link rel = "shortcut icon" type="image" href="images/icon.png">
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -19,18 +26,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/4f3d141d14.js" crossorigin="anonymous"></script>
 	<link href="history.css" rel = "stylesheet" type="text/css">
-	<style type="text/css" media="screen">
-	.btn1{
-		border-radius: 15px;
-		margin: 5px;
-		border: none;
-	}
-		.fa-pen{font-size: 25px; padding:10px;}
-		.fa-trash-alt{font-size: 25px; padding:10px;}
-	</style>
 </head>
 <body>
-  <<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -45,55 +43,43 @@
         <a class="nav-link" href="bmi.php">BMI</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link currpage" href="history.php" >HISTORY</a>
+        <a class="nav-link" href="history.php" >HISTORY</a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="workout.php">WORKOUT</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
+        <a class="nav-link currpage" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
       </li>
 	  
     </ul>
 	</div>
 	</nav>
 	
+	<div class="userprofile">
 	
-	<center><h1 style="padding:10px;">Student record history</h1></center>
-	
-	<?php	
-	$query = "SELECT * FROM bmi";
-	$result = mysqli_query($conn,$query);?>
-	
-<center><table class="table table-hover">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Date</th>
-      <th>Weight (kg)</th>
-	  <th>Height (cm)</th>
-      <th>BMI Result</th>
-	  <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php 
-	$i=0;
-	while($row = mysqli_fetch_assoc($records)):
-	$i++;
-  ?>
-  <tr>
-      <th scope="row"><?= $i?></th>
-      <td><?= $row['dateS']?></td>
-      <td><?= $row['stdWeight']?></td>
-	  <td><?= $row['stdHeight']?></td>
-      <td><?= $row['stdBmiResult']?></td>
-	  <td><button class="btn1 btn-success"><i class="fas fa-pen"></i></button><button class="btn1 btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-    </tr>
-    
-    <?php endwhile ?>
-  </tbody>
-</table></center>
+		<h1>STUDENT PROFILE</h1>
+			
+		<form method="post" action="update.php">
+		<p>Name</p>
+		<input type="text" class="form-control" placeholder="Student name" name="stdName" value="<?php echo $stdName; ?>">
+		<p>Gender</p>
+		<input type="text" class="form-control" placeholder="Student gender" name="stdGender" value="<?php echo $stdGender; ?>">
+		<p>Class</p>
+		<input type="text" class="form-control" placeholder="Student class" name="stdClass" value="<?php echo $stdClass; ?>">
+		<p>Password</p>
+		<input type="text" class="form-control" placeholder="Password" name="stdPassword" value="<?php echo $stdPassword; ?>">
+		<p>IC/Passport</p>
+		<input type="text" class="form-control" name="stdIC" value="<?php echo $stdIC; ?>" disabled>
+		<p>E-mail</p>
+		<input type="text" class="form-control" placeholder="obesitymanagement@gmail.com" name="stdEmail" value="<?php echo $stdEmail; ?>">
+		
+		<div class="saveProfile">
+		<input type = "reset" value="RESET">
+		<input type="submit" value="SAVE" id="saveProfileBtn">
+		</div>
+		</form>
+	</div>
 	
 </body>
 

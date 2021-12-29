@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php 
+	include('session.php');
+   $sql = "SELECT * FROM student WHERE stdIC = (SELECT stdIC FROM student WHERE stdEmail = '$login_session');";
+   $records = mysqli_query($conn, $sql);
+   $row = mysqli_fetch_assoc($records);
+   $stdName = $row['stdName'];
+   $stdGender = $row['stdGender'];
+   $stdClass = $row['stdClass'];
+   $stdPassword = $row['stdPassword'];
+   $stdIC = $row['stdIC'];
+   $stdEmail = $row['stdEmail'];
+?>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -36,7 +49,7 @@
         <a class="nav-link" href="workout.php">WORKOUT</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link currpage" href="studentProfile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
+        <a class="nav-link currpage" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
       </li>
 	  
     </ul>
@@ -47,23 +60,22 @@
 	
 		<h1>STUDENT PROFILE</h1>
 			
+		
 		<p>Name</p>
-		<input type="text" class="form-control" placeholder="Student name" id="stdName">
+		<input type="text" class="form-control" placeholder="Student name" name="stdName" value="<?php echo $stdName; ?>" disabled>
 		<p>Gender</p>
-		<input type="text" class="form-control" placeholder="Student gender" id="stdGender">
+		<input type="text" class="form-control" placeholder="Student gender" name="stdGender" value="<?php echo $stdGender; ?>" disabled>
 		<p>Class</p>
-		<input type="text" class="form-control" placeholder="Student class" id="stdClass">
+		<input type="text" class="form-control" placeholder="Student class" name="stdClass" value="<?php echo $stdClass; ?>" disabled>
 		<p>Password</p>
-		<input type="password" class="form-control" placeholder="Password" id="stdPassword">
+		<input type="password" class="form-control" placeholder="Password" name="stdPassword" value="<?php echo $stdPassword; ?>" disabled>
 		<p>IC/Passport</p>
-		<input type="text" class="form-control" placeholder="96xxxx-01-xxxx"id="stdIC">
+		<input type="text" class="form-control" name="stdIC" value="<?php echo $stdIC; ?>" disabled>
 		<p>E-mail</p>
-		<input type="text" class="form-control" placeholder="obesitymanagement@gmail.com" id="stdEmail">
-		<p>Phone number</p>
-		<input type="text" class="form-control" placeholder="012-12312319" id="stdPhoneNo">
+		<input type="text" class="form-control" placeholder="obesitymanagement@gmail.com" name="stdEmail" value="<?php echo $stdEmail; ?>" disabled>
 		
 		<div class="editProfile">
-		<a href="#!" class="btn btn-primary btn-lg active float-right" role="button" aria-pressed="true" id="editProfileBtn"><p>EDIT</p></a>
+		<a href="editProfile.php" class="btn btn-primary btn-lg active float-right" role="button" aria-pressed="true" id="editProfileBtn"><p>EDIT</p></a>
 		</div>
 	</div>
 	

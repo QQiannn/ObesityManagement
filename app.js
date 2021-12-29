@@ -10,9 +10,9 @@ function calculateBMI(){
     let result = document.querySelector('#result');
     console.log(height);
     if(height === '' || isNaN(height) || height < 0){
-        result.value = 'Please provide a valid height';
+        result.innerHTML = 'Please provide a valid height';
     }else if(weight === '' || isNaN(weight) || weight < 0){
-        result.value = 'Please provide a valid weight';
+        result.innerHTML = 'Please provide a valid weight';
     }
 
 
@@ -21,13 +21,12 @@ function calculateBMI(){
 
 
          if(bmi < 18.6){
-             result.value = `Under Weight : <span>${bmi}</span>`;
+             result.innerHTML = `Under Weight : <span>${bmi}</span>`;
          }else if(bmi >= 18.6 && bmi < 24.9){
-            result.value = `Normal : <span>${bmi}</span>`;
+            result.innerHTML = `Normal : <span>${bmi}</span>`;
          } else{
-            result.value = `Over Weight : <span>${bmi}</span>`;
+            result.innerHTML = `Over Weight : <span>${bmi}</span>`;
          }
     }
 	
-	$.post('bmi.php',{stdBmiResult:result});
 }

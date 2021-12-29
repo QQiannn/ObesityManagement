@@ -36,7 +36,7 @@
         <a class="nav-link currpage" href="workout.php">WORKOUT</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="studentProfile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
+        <a class="nav-link" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
       </li>
 	  
     </ul>

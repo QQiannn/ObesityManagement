@@ -72,7 +72,7 @@ include("session.php");
         <a class="nav-link" href="workout.php">WORKOUT</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="studentProfile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
+        <a class="nav-link" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
       </li>
 	  
     </ul>
@@ -82,19 +82,17 @@ include("session.php");
 	<br>
     <div class="container">
         <h1>BMI Calculator</h1>
-		<form method="post" action="bmi.php">
         <p>Height (in cm)</p>
         <input type="text" name="stdHeight" id="height">
 
         <p>Weight (in kg)</p>
         <input type="text" name="stdWeight" id="weight">
 	
-		<p name="stdBmiResult" size="30" id = "result"></p>
+		<div id = "result"></div>
 		
-		<input type="button" id="btn" value="Calculate">
+		<button id  = "btn">Calculate</button>
 		<br>
 		<button name="submit" type="submit" value="Submit">Save</button>
-		</form>
     </div>
 	
 </body>

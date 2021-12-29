@@ -32,7 +32,7 @@
          $query = "INSERT INTO `student` (`stdName`, `stdIC`, `stdClass`, `stdEmail`, `stdPassword`, `stdGender`) VALUES ('$stdName', '$stdIC', '$stdClass', '$stdEmail', '$stdPassword', '$stdGender');";
   	      mysqli_query($conn, $query);
   	      $_SESSION['login_user'] = $stdIC;
-  	      echo "<script>alert('Registered successfully!');window.location.href='index.php'</script>";
+  	      echo "<script>alert('Registered successfully!');window.location.href='login.php'</script>";
       }else {
          echo "<script>alert('Email has already existed in the system!');window.location.href='signup.php'</script>";
       }
