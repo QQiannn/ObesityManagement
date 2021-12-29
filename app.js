@@ -30,5 +30,4 @@ function calculateBMI(){
     }
 	
 	$.post('bmi.php',{stdBmiResult:result});
-	
 }

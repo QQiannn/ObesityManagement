@@ -88,7 +88,7 @@ include("session.php");
 
         <p>Weight (in kg)</p>
         <input type="text" name="stdWeight" id="weight">
-		
+	
 		<p name="stdBmiResult" size="30" id = "result"></p>
 		
 		<input type="button" id="btn" value="Calculate">
