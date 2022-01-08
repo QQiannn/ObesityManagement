@@ -1,8 +1,7 @@
-window.onload = () =>{
-    let button = document.querySelector('#btn');
-    button.addEventListener('click', calculateBMI);
-}
-
+// window.onload = () =>{
+    // let button = document.querySelector('#btn');
+    // button.addEventListener('click', calculateBMI);
+// }
 
 function calculateBMI(){
     let height = parseInt(document.querySelector('#height').value);
@@ -21,12 +20,24 @@ function calculateBMI(){
 
 
          if(bmi < 18.6){
-             result.innerHTML = `Under Weight : <span>${bmi}</span>`;
+             let bmiResult = `Under Weight : <span>${bmi}</span>`;
+			 result.innerHTML = bmiResult;
          }else if(bmi >= 18.6 && bmi < 24.9){
-            result.innerHTML = `Normal : <span>${bmi}</span>`;
+            let bmiResult = `Normal : <span>${bmi}</span>`;
+			 result.innerHTML = bmiResult;
          } else{
-            result.innerHTML = `Over Weight : <span>${bmi}</span>`;
+            let bmiResult = `Over Weight : <span>${bmi}</span>`;
+			 result.innerHTML = bmiResult;
          }
     }
+	
+	  $.ajax({
+            url: 'bmi.php',
+            type: 'POST',
+            data: {bmiResult : bmiResult},
+            success: function(data) {
+                console.log("success");
+            }
+        });
 	
 }

@@ -10,7 +10,7 @@ include("session.php");
 	  
       $stdHeight = $_POST['stdHeight'];
 	  $stdWeight = $_POST['stdWeight'];
-      $stdBmiResult = $_POST['stdBmiResult'];
+      $stdBmiResult = $_POST['bmiResult'];
 	  
       //Get current date
 		// extract($_POST);
@@ -25,6 +25,7 @@ include("session.php");
 		}
       
    }
+   
 ?>
 
 <html>
@@ -37,17 +38,13 @@ include("session.php");
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/4f3d141d14.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src = "app.js"></script>
-<script>
-	function myFunction() {
-	alert("Your data has been saved ✔");
-}
-</script>
 </head>
 
 <body>
@@ -82,17 +79,38 @@ include("session.php");
 	<br>
     <div class="container">
         <h1>BMI Calculator</h1>
-        <p>Height (in cm)</p>
+		<form action="bmi.php" method="POST">
+		<div class="text">
+		<p>Height (in cm)</p>
+        </div>
+		<?php echo $_COOKIE["bmiResult"];?>
+		<div class="input-box">
         <input type="text" name="stdHeight" id="height">
-
-        <p>Weight (in kg)</p>
-        <input type="text" name="stdWeight" id="weight">
-	
-		<div id = "result"></div>
+		</div>
+	  
+		<div class="text">
+		<p>Weight (in kg)</p>
+        </div>
 		
-		<button id  = "btn">Calculate</button>
+		<div class="input-box">
+		<input type="text" name="stdWeight" id="weight">
+		</div>
+		  
+		<div id = "result"></div>
+		<input type="button" id  = "btn" value = "Calculate" onclick="calculateBMI();"/>
 		<br>
-		<button name="submit" type="submit" value="Submit">Save</button>
+		<div class="input-box button">
+        <input type="submit" name="submit" value="Save">
+      </div>
+     
+    </form>
+        
+
+        
+	
+		
+		
+		
     </div>
 	
 </body>

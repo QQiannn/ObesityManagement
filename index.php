@@ -80,8 +80,7 @@ h1{
   <a  href="bmi.php" class="btn btn-primary">BMI CALCULATOR</a>
   <a  href="history.php" class="btn btn-primary">HISTORY</a>
   <a  href="workout.php" class="btn btn-primary">WORKOUT</a>
-  <a  href="profile.php" class="btn btn-primary">STUDENT PROFILE</a>  
-  <a  href="logout.php" class="btn-danger" >LOG OUT</a>
+  <a  href="profile.php" class="btn btn-primary">STUDENT PROFILE</a> 
 </div></center>
 <br>
 </body>

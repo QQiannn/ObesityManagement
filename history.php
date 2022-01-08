@@ -27,10 +27,12 @@
 	}
 		.fa-pen{font-size: 25px; padding:10px;}
 		.fa-trash-alt{font-size: 25px; padding:10px;}
+	a{
+	color:#fff;}
 	</style>
 </head>
 <body>
-  <<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -61,9 +63,6 @@
 	
 	<center><h1 style="padding:10px;">Student record history</h1></center>
 	
-	<?php	
-	$query = "SELECT * FROM bmi";
-	$result = mysqli_query($conn,$query);?>
 	
 <center><table class="table table-hover">
   <thead>
@@ -88,7 +87,7 @@
       <td><?= $row['stdWeight']?></td>
 	  <td><?= $row['stdHeight']?></td>
       <td><?= $row['stdBmiResult']?></td>
-	  <td><button class="btn1 btn-success"><i class="fas fa-pen"></i></button><button class="btn1 btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+	  <td><button class="btn1 btn-success"><i class="fas fa-pen"></i></button><button class="btn1 btn-danger"><a href="delete.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-trash-alt"></i></a></button></td>
     </tr>
     
     <?php endwhile ?>

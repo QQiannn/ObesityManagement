@@ -31,7 +31,7 @@
       if($count == 0) {
          $query = "INSERT INTO `student` (`stdName`, `stdIC`, `stdClass`, `stdEmail`, `stdPassword`, `stdGender`) VALUES ('$stdName', '$stdIC', '$stdClass', '$stdEmail', '$stdPassword', '$stdGender');";
   	      mysqli_query($conn, $query);
-  	      $_SESSION['login_user'] = $stdIC;
+  	      $_SESSION['login_user'] = $stdEmail;
   	      echo "<script>alert('Registered successfully!');window.location.href='login.php'</script>";
       }else {
          echo "<script>alert('Email has already existed in the system!');window.location.href='signup.php'</script>";
@@ -42,7 +42,7 @@
   <head>
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width", initial-scale=1.0>
-	<title> Sign Up </title>
+	<title>SIGN UP</title>
 	<link rel = "shortcut icon" type="image" href="images/icon.png">
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -97,7 +97,7 @@ body{
 }
 .wrapper form .input-box{
   height: 52px;
-  margin: 18px 0;
+  margin: 5px 0 5px 0;
 }
 form .input-box input{
   height: 100%;
@@ -148,6 +148,33 @@ form .text h3 a{
 form .text h3 a:hover{
   text-decoration: underline;
 }
+label{
+	padding:0;
+	margin:0;
+}
+
+select {
+    -webkit-writing-mode: horizontal-tb !important;
+    font-size: 1.3em;
+    color: -internal-light-dark(black, white);
+    box-sizing: border-box;
+    align-items: center;
+    background-color: #fff
+    cursor: default;
+    margin: 0em;
+    border: 1.5px solid #C7BEBE;
+    border-radius: 0.3em;
+}
+
+input[type="radio" i] {
+    background-color: #fff;
+	cursor: pointer;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    width: 100%;
+    height: 1em;
+}
+
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,21 +185,41 @@ form .text h3 a:hover{
   <div class="wrapper">
     <Center><h2>Sign Up</h2></Center>
     <form action="signup.php" method="POST">
+	<label>Name</label>
       <div class="input-box">
         <input type="text" name="stdName" placeholder="Enter your name" required>
       </div>
+	  <label>Email</label>
       <div class="input-box">
         <input type="text" name="stdEmail" placeholder="Enter your email" required>
       </div>
+	  <label>IC/Passport</label>
       <div class="input-box">
         <input type="Number" name="stdIC" placeholder="Enter your IC" required>
       </div>
-	  <div class="input-box">
+	  
+	  <!--<div class="input-box">
         <input type="text" name="stdClass" placeholder="Enter your class" required>
-      </div>
-	  <div class="input-box">
+      </div>-->
+	  <div class="form-group">
+	  <label>Select your class</label><br>
+	  <select name="stdClass">
+		<option value="C12">C12</option>
+		<option value="C13">C13</option>
+	  </select><br>
+	  </div>
+	  
+	  <div class="form-group">
+	  <label>Select your gender</label><br>
+	  <input type="radio" name="stdGender" value="Male"/>Male
+	  
+	  <input type="radio" name="stdGender" value="Female"/>Female
+	  </div>
+	  
+	  <!--div class="input-box">
+	   
         <input type="text" name="stdGender"  placeholder="Enter your gender" required>
-      </div>
+      </div-->
       <div class="input-box">
         <input type="password"  name="stdPassword" placeholder="Create password" required>
       </div>

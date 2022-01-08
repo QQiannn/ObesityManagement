@@ -14,7 +14,7 @@ if(mysqli_connect_errno()){
 }
 
 //To select one particular database to be used
-mysqli_select_db($conn,"studentrecord") or die("Could not open products database");
+mysqli_select_db($conn,"studentrecord") or die("Could not open student records database");
 
 //Set default time zone to use in Msia
 date_default_timezone_set('Asia/Kuala_Lumpur');

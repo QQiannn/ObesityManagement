@@ -26,6 +26,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/4f3d141d14.js" crossorigin="anonymous"></script>
 	<link href="history.css" rel = "stylesheet" type="text/css">
+	<style type="text/css" media="screen">
+	#logoutBtn{
+	margin-top: 25px;
+	color: #fff;
+	padding: 0.2rem 0.2rem;
+    font-size: 0.95rem;
+    border-radius: 0.5rem;</style>
+}
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -76,6 +84,7 @@
 		
 		<div class="editProfile">
 		<a href="editProfile.php" class="btn btn-primary btn-lg active float-right" role="button" aria-pressed="true" id="editProfileBtn"><p>EDIT</p></a>
+		<a href="logout.php" class="btn btn-danger active float-right" role="button" aria-pressed="true" id="logoutBtn"><p>LOG OUT</p></a>
 		</div>
 	</div>
 	

@@ -15,13 +15,13 @@
         $password = $_POST['password'];
         // mysqli_connect() function opens a new connection to the MySQL server.
         $conn = mysqli_connect("localhost:3307", "root", "", "studentrecord");
-        // SQL query to fetch information of registerd users and finds user match.
+        // SQL query to fetch information of registered users and finds user match.
         $query = "SELECT stdEmail, stdPassword from student where stdEmail='$email' AND stdPassword='$password' LIMIT 1";
         // To protect MySQL injection for Security purpose
         $stmt = mysqli_query($conn, $query);
         if(mysqli_num_rows($stmt) == 1) {
         $_SESSION['login_user'] = $email; // Initializing Session
-        header("location: index.php"); // Redirecting To Profile Page
+			header("location: index.php"); // Redirecting To Profile Page
         } else {
             $error = "Email or Password is invalid";
             echo "<script>alert('$error');window.location.href='login.php'</script>";
@@ -35,7 +35,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width", initial-scale=1.0>
-	<title>HISTORY</title>
+	<title>LOGIN</title>
 	<link rel = "shortcut icon" type="image" href="images/icon.png">
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -187,8 +187,9 @@ input[type="submit"]:hover{
         </div>
         
         <input type="submit" name="submit" value="Login">
-          
+          <br>
           Not a member? <a href="signup.php">Signup</a>
+		  <br>
         </div>
       </form>
     </div>
