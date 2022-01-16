@@ -5,7 +5,7 @@ include("session.php");
 
 extract ($_POST);
 
-$query = "UPDATE student SET stdName = '$stdName', stdClass = '$stdClass', stdEmail = '$stdEmail', stdPassword='$stdPassword', stdGender = '$stdGender' WHERE stdIC = (SELECT stdIC FROM student WHERE stdEmail = '$login_session');";
+$query = "UPDATE student SET stdName = '$stdName', stdClass = '$stdClass', stdEmail = '$stdEmail', stdPassword='$stdPassword', stdGender = '$stdGender' WHERE stdIC = '$login_session';";
 
 $result = mysqli_query($conn, $query) or die("Could not execute query in update.php");
 if ($result){

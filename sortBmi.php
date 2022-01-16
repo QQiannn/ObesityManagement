@@ -1,22 +1,15 @@
 <!DOCTYPE html>
-<?php 
-	include('session.php');
-   $sql = "SELECT * FROM student WHERE stdIC = '$login_session';";
+<?php
+   include('session.php');
+   $sql = "SELECT * FROM bmi WHERE stdIC = '$login_session' ORDER BY dates DESC;";
    $records = mysqli_query($conn, $sql);
-   $row = mysqli_fetch_assoc($records);
-   $stdName = $row['stdName'];
-   $stdGender = $row['stdGender'];
-   $stdClass = $row['stdClass'];
-   $stdPassword = $row['stdPassword'];
-   $stdIC = $row['stdIC'];
-   $stdEmail = $row['stdEmail'];
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width", initial-scale=1.0>
-	<title>USER</title>
+	<title>HISTORY</title>
 	<link rel = "shortcut icon" type="image" href="images/icon.png">
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -27,13 +20,24 @@
 	<script src="https://kit.fontawesome.com/4f3d141d14.js" crossorigin="anonymous"></script>
 	<link href="history.css" rel = "stylesheet" type="text/css">
 	<style type="text/css" media="screen">
-	.logoutBtn{
-	margin-top: 25px;
-	color: #fff;
-	padding: 0.2rem 0.2rem;
-    font-size: 0.95rem;
-    border-radius: 0.5rem;
+	.btn1{
+		border-radius: 15px;
+		margin: 5px;
+		border: none;
 	}
+		.fa-pen{font-size: 25px; padding:10px;}
+		.fa-trash-alt{font-size: 25px; padding:10px;}
+		.fa-sort-amount-down-alt{font-size: 25px; padding:10px;}
+		
+	a
+	{
+		color:#fff;
+	}
+	
+	a:hover{
+		color:#000;
+	}
+	
 	</style>
 </head>
 <body>
@@ -52,42 +56,52 @@
         <a class="nav-link" href="bmi.php">BMI</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="history.php" >HISTORY</a>
+        <a class="nav-link currpage" href="history.php" >HISTORY</a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="workout.php">WORKOUT</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link currpage" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
+        <a class="nav-link" href="profile.php"><img src="images/user.png" alt="user icon" id="user-icon"></a>
       </li>
 	  
     </ul>
 	</div>
 	</nav>
 	
-	<div class="userprofile">
 	
-		<h1>STUDENT PROFILE</h1>
-			
+	<center><h1 style="padding:10px;">Student record history</h1></center>
 		
-		<p>Name</p>
-		<input type="text" class="form-control" placeholder="Student name" name="stdName" value="<?php echo $stdName; ?>" disabled>
-		<p>Gender</p>
-		<input type="text" class="form-control" placeholder="Student gender" name="stdGender" value="<?php echo $stdGender; ?>" disabled>
-		<p>Class</p>
-		<input type="text" class="form-control" placeholder="Student class" name="stdClass" value="<?php echo $stdClass; ?>" disabled>
-		<p>Password</p>
-		<input type="password" class="form-control" placeholder="Password" name="stdPassword" value="<?php echo $stdPassword; ?>" disabled>
-		<p>IC/Passport</p>
-		<input type="text" class="form-control" name="stdIC" value="<?php echo $stdIC; ?>" disabled>
-		<p>E-mail</p>
-		<input type="text" class="form-control" placeholder="obesitymanagement@gmail.com" name="stdEmail" value="<?php echo $stdEmail; ?>" disabled>
-		
-		<div class="editProfile">
-		<a href="editProfile.php" class="btn btn-primary btn-lg active float-right" role="button" aria-pressed="true" id="editProfileBtn"><p>EDIT</p></a>
-		<a href="logout.php" class="btn btn-danger active float-right logoutBtn" role="button" aria-pressed="true"><p>LOG OUT</p></a>
-		</div>
-	</div>
+<center><table class="table table-hover">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Date</th>
+	  <th>Height (cm)</th>
+      <th>Weight (kg)</th>
+      <th>BMI Result</th>
+	  <th>Actions <button class="btn1 btn-success"><a href="history.php"><i class="fas fa-sort-amount-down-alt"></i></a></button>
+	</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php 
+	$i=0;
+	while($row = mysqli_fetch_assoc($records)):
+	$i++;
+  ?>
+  <tr>
+      <th scope="row"><?= $i?></th>
+      <td><?= $row['dateS']?></td>
+	  <td><?= $row['stdHeight']?></td>
+      <td><?= $row['stdWeight']?></td>
+      <td><?= $row['stdBmiResult']?></td>
+	  <td><button class="btn1 btn-success"><a href="editBmi.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-pen"></i></a></button><button class="btn1 btn-danger"><a href="delete.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-trash-alt"></i></a></button></td>
+    </tr>
+    
+    <?php endwhile ?>
+  </tbody>
+</table></center>
 	
 </body>
 

@@ -168,6 +168,6 @@ label{
     border-radius: 0.5rem;
 }
 
-.editProfile{
+.editProfile, .saveProfile{
 	text-align: right;
 }

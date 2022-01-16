@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
-include('session.php');
+	include('session.php');
+	$sql = "SELECT * FROM student WHERE stdIC = '$login_session';";
+    $records = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($records);
+    $stdName = $row['stdName'];
 ?>
 
 <html>
@@ -73,7 +77,7 @@ h1{
 <br>
 <div class="topHeader">
 	<img src="images/logo.png" id="website-logo" alt="Website logo">
-	<h1>WELCOME </h1>
+	<h1>WELCOME, <?php echo $stdName;?></h1>
 </div>
 
 <center><div class="d-grid gap-2">

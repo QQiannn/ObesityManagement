@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
    include('session.php');
-   $sql = "SELECT * FROM bmi WHERE stdIC = (SELECT stdIC FROM student WHERE stdEmail = '$login_session');";
+   $sql = "SELECT * FROM bmi WHERE stdIC = '$login_session' ORDER BY dateS;";
    $records = mysqli_query($conn, $sql);
 ?>
 
@@ -27,8 +27,17 @@
 	}
 		.fa-pen{font-size: 25px; padding:10px;}
 		.fa-trash-alt{font-size: 25px; padding:10px;}
-	a{
-	color:#fff;}
+		.fa-sort-amount-up-alt{font-size: 25px; padding:10px;}
+		
+	a
+	{
+		color:#fff;
+	}
+	
+	a:hover{
+		color:#000;
+	}
+	
 	</style>
 </head>
 <body>
@@ -69,10 +78,11 @@
     <tr>
       <th>No</th>
       <th>Date</th>
-      <th>Weight (kg)</th>
 	  <th>Height (cm)</th>
+      <th>Weight (kg)</th>
       <th>BMI Result</th>
-	  <th>Actions</th>
+	  <th>Actions<button class="btn1 btn-success"><a href="sortBmi.php"><i class="fas fa-sort-amount-up-alt"></i></a></button>
+	</th>
     </tr>
   </thead>
   <tbody>
@@ -84,10 +94,10 @@
   <tr>
       <th scope="row"><?= $i?></th>
       <td><?= $row['dateS']?></td>
-      <td><?= $row['stdWeight']?></td>
 	  <td><?= $row['stdHeight']?></td>
+      <td><?= $row['stdWeight']?></td>
       <td><?= $row['stdBmiResult']?></td>
-	  <td><button class="btn1 btn-success"><i class="fas fa-pen"></i></button><button class="btn1 btn-danger"><a href="delete.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-trash-alt"></i></a></button></td>
+	  <td><button class="btn1 btn-success"><a href="editBmi.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-pen"></i></a></button><button class="btn1 btn-danger"><a href="delete.php?bmiID=<?php echo $row['bmiID']; ?>"><i class="fas fa-trash-alt"></i></a></button></td>
     </tr>
     
     <?php endwhile ?>

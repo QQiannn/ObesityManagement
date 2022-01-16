@@ -1,5 +1,12 @@
 <?php
-	include("session.php");
+	$id=$_GET['bmiID'];
+	include('session.php');
+	$sql = "SELECT * from `bmi` where bmiID='$id';";
+	$records = mysqli_query($conn, $sql) or die("Failed to execute query in editBmi.php");
+    $row = mysqli_fetch_assoc($records);
+	$stdWeight = $row['stdWeight'];
+	$stdHeight = $row['stdHeight'];
+	$stdBmiResult = $row['stdBmiResult'];
 ?>
 
 <!DOCTYPE html>
@@ -127,15 +134,14 @@
 <form action="bmi.php" method="post">
     <div class="section1">
         <span>Enter Your Height (cm): </span>
-        <input type="text" name="height" autocomplete="off" placeholder="Centimeter" class="inputInfo"><?php echo $errh; ?>
+        <input type="text" name="height" autocomplete="off" placeholder="Centimeter" value="<?php echo $stdHeight;?>" class="inputInfo"><?php echo $errh; ?>
     </div>
     
     <div class="section2">
         <span>Enter Your weight (kg) : </span>
-        <input type="text" name="weight" autocomplete="off" placeholder="Kilogram" class="inputInfo"><?php echo $errw; ?>
+        <input type="text" name="weight" autocomplete="off" placeholder="Kilogram" value="<?php echo $stdWeight;?>" class="inputInfo"><?php echo $errw; ?>
     </div>    
-    <div class="submit">
-	<br>
+    <div class="submit"><br>
         <input type="submit" name="calculate" value="Calculate BMI" class="btn btn-danger active calcBtn"><br>
         <input type="submit" name="saveRecord" value="Save record" formaction="insertbmi.php" class="btn btn-primary btn-lg active calcBtn" >
     </div>
