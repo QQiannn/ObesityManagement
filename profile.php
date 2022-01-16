@@ -87,6 +87,10 @@
 		<a href="editProfile.php" class="btn btn-primary btn-lg active float-right" role="button" aria-pressed="true" id="editProfileBtn"><p>EDIT</p></a>
 		<a href="logout.php" class="btn btn-danger active float-right logoutBtn" role="button" aria-pressed="true"><p>LOG OUT</p></a>
 		</div>
+		
+		<a href="deleteaccount.php" class="btn btn-danger active float-left logoutBtn" role="button" aria-pressed="true"><p>DELETE ACCOUNT</p></a>
+		
+		
 	</div>
 	
 </body>
